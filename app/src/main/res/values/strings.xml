@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Market Platform</string>
+    <string name="text_glaza">Top maxsulotlar reytingi</string>
+    <string name="text_location">Yaqin atrofdan\nizlash</string>
+    <string name="text_online">Uydan turib\nxarid qilish</string>
+    <string name="text_states">Kerakli\nmaqolalar</string>
+</resources>

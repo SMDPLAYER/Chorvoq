@@ -9,4 +9,6 @@
     <color name="black">#000</color>
     <color name="white">#FFFFFF</color>
     <color name="code_edit_text_background">#FFCCCCCC</color>
+    <color name="iGray">#C5C5C5</color>
+    <color name="new_red">#F51414</color>
 </resources>

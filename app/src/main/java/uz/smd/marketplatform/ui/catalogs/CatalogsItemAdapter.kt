@@ -5,9 +5,6 @@ package uz.smd.marketplatform.ui.catalogs
  */
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import uz.smd.marketplatform.R
 import uz.smd.marketplatform.utils.bindItem
@@ -33,7 +30,7 @@ class CatalogsItemAdapter : RecyclerView.Adapter<CatalogsItemAdapter.ViewHolder>
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(parent.inflate(R.layout.item_catalogs_list))
+        ViewHolder(parent.inflate(R.layout.item_catalogs_item))
 
     override fun getItemCount() = tasksDay.size
 

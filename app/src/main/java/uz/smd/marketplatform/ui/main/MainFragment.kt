@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
 import uz.smd.marketplatform.R
+import java.util.concurrent.Executors
 
 /**
  * Created by Siddikov Mukhriddin on 2/10/21
@@ -16,24 +17,24 @@ import uz.smd.marketplatform.R
 @SuppressLint("FragmentLiveDataObserve")
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
-    private val viewModel: MainViewModel by viewModels()
+//    private val viewModel: MainViewModel by viewModels()
 val adapter=ListUseAreasAdapter()
 val adapterUser=ListUserAdapter()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        handleLiveData()
-        listUseAreas.adapter=adapter
-        listPrograms.adapter=adapterUser
-        adapter.setListenerGetPos {  }
-        adapter.setTasksDay(listUseAreas())
-        adapterUser.setTasksDay(listUserData())
+        Executors.newSingleThreadExecutor().execute {
+            requireActivity().runOnUiThread {
+                listUseAreas.adapter=adapter
+                listPrograms.adapter=adapterUser
+                adapter.setListenerGetPos {  }
+                adapter.setTasksDay(listUseAreas())
+                adapterUser.setTasksDay(listUserData())
+            }
+        }
+
     }
 
-    fun handleLiveData() {
-//        viewModel.k.observe(this, Observer {
-////            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-//        })
-    }
+
     fun listUseAreas(): List<UseArea> {
         val listUseAreas = ArrayList<UseArea>()
         listUseAreas.add(UseArea(1, R.string.text_glaza, R.drawable.icn_stat))

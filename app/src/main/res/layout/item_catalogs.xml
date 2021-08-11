@@ -23,5 +23,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_catalogs_list" />
+        tools:listitem="@layout/item_catalogs_item" />
 </LinearLayout>

@@ -9,31 +9,33 @@ import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
 import uz.smd.marketplatform.R
+import java.util.concurrent.Executors
 
 /**
  * Created by Siddikov Mukhriddin on 2/10/21
  */
 @AndroidEntryPoint
 class CatalogsFragment : Fragment(R.layout.fragment_category) {
-    private val viewModel: CatalogsViewModel by viewModels()
+//    private val viewModel: CatalogsViewModel by viewModels()
 val adapterUser=CatalogsAdapter()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        handleLiveData()
-        listPrograms.adapter=adapterUser
-        adapterUser.setTasksDay(listUserData())
+        Executors.newSingleThreadExecutor().execute {
+            requireActivity().runOnUiThread {
+                listPrograms.adapter=adapterUser
+                adapterUser.setTasksDay(listUserData())
+            }
+        }
+
+
     }
 
-    fun handleLiveData() {
-//        viewModel.k.observe(this, Observer {
-////            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-//        })
-    }
+
 
     fun listUserData(): List<CatalogsList> {
 
         val listCatalogs = ArrayList<CatalogsList>()
-        for (i in 0..10){
+        for (i in 0..6){
             val listUseAreas = ArrayList<Catalogs>()
             listUseAreas.add(Catalogs( "Kitoblar", R.drawable.img_book,"Kitoblar"))
             listUseAreas.add(Catalogs( "Badiy Adabiyotlar", R.drawable.img_book,"Kitoblar"))

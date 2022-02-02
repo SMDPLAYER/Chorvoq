@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import uz.smd.marketplatform.R
 import java.util.concurrent.Executors
 
@@ -20,17 +23,26 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 //    private val viewModel: MainViewModel by viewModels()
 val adapter=ListUseAreasAdapter()
 val adapterUser=ListUserAdapter()
+    val data= MutableLiveData<List<UseArea>>()
+    val data1= MutableLiveData<List<UserData>>()
+    init {
+        data.postValue(listUseAreas())
+        data1.postValue(listUserData())
+        data.observe(this, Observer {
+            adapter.setTasksDay(it)
+        })
+        data1.observe(this, Observer {
+            adapterUser.setTasksDay(it)
+        })
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Executors.newSingleThreadExecutor().execute {
-            requireActivity().runOnUiThread {
-                listUseAreas.adapter=adapter
-                listPrograms.adapter=adapterUser
-                adapter.setListenerGetPos {  }
-                adapter.setTasksDay(listUseAreas())
-                adapterUser.setTasksDay(listUserData())
-            }
-        }
+
+        listUseAreas.adapter=adapter
+        adapter.setListenerGetPos {  }
+
+        listPrograms.adapter=adapterUser
+
 
     }
 

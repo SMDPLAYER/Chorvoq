@@ -14,6 +14,7 @@ import uz.smd.marketplatform.R
 import uz.smd.marketplatform.ui.catalogs.CatalogsFragment
 import uz.smd.marketplatform.ui.main.MainFragment
 import uz.smd.marketplatform.ui.profile.ProfileFragment
+import uz.smd.marketplatform.ui.trash.TrashFragment
 
 
 @AndroidEntryPoint
@@ -56,8 +57,8 @@ class MainActivity : AppCompatActivity() {
 
         }
         btnBottom3.setOnClickListener {
-//            supportFragmentManager.beginTransaction().replace(R.id.mainContainer, HelpRegistrationFragment())
-//                .commit()
+            supportFragmentManager.beginTransaction().replace(R.id.mainContainer, TrashFragment())
+                .commit()
             it.bottomSelelected()
         }
         btnBottom4.setOnClickListener {

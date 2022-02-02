@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -18,14 +19,18 @@ import java.util.concurrent.Executors
 class CatalogsFragment : Fragment(R.layout.fragment_category) {
 //    private val viewModel: CatalogsViewModel by viewModels()
 val adapterUser=CatalogsAdapter()
+    val data= MutableLiveData<List<CatalogsList>>()
+    init {
+        data.postValue(listUserData())
+        data.observe(this, Observer {
+            adapterUser.setTasksDay(it)
+        })
+    }
+    @SuppressLint("FragmentLiveDataObserve")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Executors.newSingleThreadExecutor().execute {
-            requireActivity().runOnUiThread {
-                listPrograms.adapter=adapterUser
-                adapterUser.setTasksDay(listUserData())
-            }
-        }
+        listPrograms.adapter=adapterUser
+
 
 
     }

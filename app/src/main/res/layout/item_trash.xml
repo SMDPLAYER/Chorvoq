@@ -17,12 +17,13 @@
             android:id="@+id/imageView"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/img_book"
+            android:src="@drawable/img_san_oqtosh"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:visibility="invisible"
             android:id="@+id/imgMinus"
             android:layout_width="34dp"
             android:layout_height="34dp"
@@ -32,6 +33,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <TextView
+            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
@@ -41,6 +43,7 @@
             app:layout_constraintStart_toEndOf="@+id/imgMinus"
             app:layout_constraintTop_toTopOf="@+id/imgMinus" />
         <ImageView
+            android:visibility="invisible"
             android:id="@+id/imgPlus"
             android:layout_width="34dp"
             android:layout_height="34dp"
@@ -50,13 +53,7 @@
             app:layout_constraintStart_toEndOf="@+id/imgMinus"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <TextView
-            style="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="19 000 so'm"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-            app:layout_constraintTop_toBottomOf="@+id/imgPlus" />
+
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -74,7 +71,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Kitob"
+                android:text="Oqtosh sanatoriya"
                 android:textColor="#000"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -100,6 +97,14 @@
             <!--                android:layout_gravity="end"-->
             <!--                android:layout_height="24dp"/>-->
         </LinearLayout>
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:text="Taxminiy xarajat:\n 190 000 so'm"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

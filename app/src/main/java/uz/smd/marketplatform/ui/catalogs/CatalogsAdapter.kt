@@ -36,6 +36,7 @@ class CatalogsAdapter : RecyclerView.Adapter<CatalogsAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind()
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ks=itemView.listPrograms1
+        val title=itemView.titleCatalogs
 
 //        private val title: TextView = itemView.tileUser
 //        private val name: TextView = itemView.nameUser
@@ -55,6 +56,7 @@ class CatalogsAdapter : RecyclerView.Adapter<CatalogsAdapter.ViewHolder>() {
 //        }
 //    });
             val d = tasksDay[adapterPosition]
+    title.text=d.type
     val adapter=CatalogsItemAdapter()
     ks.adapter=adapter
     adapter.setTasksDay(d.list)

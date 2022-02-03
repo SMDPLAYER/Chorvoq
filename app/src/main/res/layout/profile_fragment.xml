@@ -142,7 +142,7 @@
 
                 <TextView
                     style="@style/Profile.Action"
-                    android:text="Buyurtmalar tarixi" />
+                    android:text="Sayoxatlar tarixi" />
             </LinearLayout>
 
             <LinearLayout
@@ -174,7 +174,7 @@
 
                 <TextView
                     style="@style/Profile.Action"
-                    android:text="Mening buyurtmalarim" />
+                    android:text="Transport bekatlari" />
             </LinearLayout>
 
             <LinearLayout

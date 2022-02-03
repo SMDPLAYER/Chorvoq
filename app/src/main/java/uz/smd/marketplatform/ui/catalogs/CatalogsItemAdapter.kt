@@ -5,7 +5,11 @@ package uz.smd.marketplatform.ui.catalogs
  */
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.item_catalogs_item.view.*
 import uz.smd.marketplatform.R
 import uz.smd.marketplatform.utils.bindItem
 import uz.smd.marketplatform.utils.inflate
@@ -36,11 +40,13 @@ class CatalogsItemAdapter : RecyclerView.Adapter<CatalogsItemAdapter.ViewHolder>
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind()
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-//        private val title: TextView = itemView.textUseAreas
-//        private val imagePopular: ImageView = itemView.img_popular_program_one_list
+        private val title: TextView = itemView.tileUser
+        private val imagePopular: ImageView = itemView.imgBook
 //        private val viewUseAreas: LinearLayout = itemView.viewUseArea
         fun bind() = bindItem {
             val d = tasksDay[adapterPosition]
+    title.text = d.title
+    Glide.with(this).load(d.image).placeholder(R.drawable.progress_animation).into(imagePopular)
 //            title.setText(d.title)
 //            imagePopular.setImageResource(d.image)
 //            viewUseAreas.setOnClickListener { listener?.invoke(d) }

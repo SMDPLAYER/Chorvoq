@@ -41,7 +41,7 @@
         android:textColor="@color/bottom_menu_color"
         android:drawableTop="@drawable/ic_shop"
         android:gravity="center"
-        android:text="Savatcha\n" />
+        android:text="Sevimli\n" />
     <TextView
         android:foreground="?selectableItemBackgroundBorderless"
         android:id="@+id/btnBottom4"

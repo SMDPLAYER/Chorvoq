@@ -22,7 +22,23 @@ import java.util.concurrent.Executors
 class MainFragment : Fragment(R.layout.fragment_main) {
 //    private val viewModel: MainViewModel by viewModels()
 val adapter=ListUseAreasAdapter()
-val adapterUser=ListUserAdapter()
+val adapterUser = ListUserAdapter(){
+  val newItem=  DetailItem(
+        name = getString(R.string.text_humson_title),
+        location = getString(R.string.text_humson_location),
+        locationLat = getString(R.string.text_humson_lat),
+        locationLon = getString(R.string.text_humson_lon),
+        phone = getString(R.string.text_humson_phone) ,
+        detail = getString(R.string.text_humson_detail),
+        img = R.drawable.img_san_buloq_humson
+    )
+    parentFragmentManager.beginTransaction().replace(R.id.mainContainer, DetailFragment().apply {
+        if (it.id != 1)
+        currentItem = newItem
+
+    }).addToBackStack(null)
+        .commit()
+}
     val data= MutableLiveData<List<UseArea>>()
     val data1= MutableLiveData<List<UserData>>()
     init {
@@ -58,10 +74,10 @@ val adapterUser=ListUserAdapter()
     }
     fun listUserData(): List<UserData> {
         val listUseAreas = ArrayList<UserData>()
-        listUseAreas.add(UserData(1, "Matematika", "Siddiqov Muxriddin","Matematikadan 10 yillik tajriba 1000 ortiq muvaffaqiyatli bitirgan talabalar. Darslar istalgan shaklda olib boriladi (onlayn, offlayn) ,haftaning qulay paytidagi guruxlarga qushilish imkoniyati",3,"Toshkent"))
-        listUseAreas.add(UserData(2, "Matematika", "Naimova Nilufar","Matematikadan 5 yillik tajriba 500 ortiq muvaffaqiyatli bitirgan talabalar. Darslar istalgan shaklda olib boriladi (onlayn, offlayn) ,haftaning qulay paytidagi guruxlarga qushilish imkoniyati",3,"Toshkent"))
-        listUseAreas.add(UserData(3, "Fizika", "Xojiev Akbar","Fizikadan 15 yillik tajriba 1000 ortiq muvaffaqiyatli bitirgan talabalar. Darslar istalgan shaklda olib boriladi (onlayn, offlayn) ,haftaning qulay paytidagi guruxlarga qushilish imkoniyati",3,"Toshkent"))
-        listUseAreas.add(UserData(4, "Oliy matematika", "Oripov Akram","Matematikadan 10 yillik tajriba 1000 ortiq muvaffaqiyatli bitirgan talabalar. Darslar istalgan shaklda olib boriladi (onlayn, offlayn) ,haftaning qulay paytidagi guruxlarga qushilish imkoniyati",3,"Toshkent"))
+        listUseAreas.add(UserData(1, "Oqtosh Sanataroyasi", "Siddiqov Muxriddin","Matematikadan 10 yillik tajriba 1000 ortiq muvaffaqiyatli bitirgan talabalar. Darslar istalgan shaklda olib boriladi (onlayn, offlayn) ,haftaning qulay paytidagi guruxlarga qushilish imkoniyati",3,"Toshkent", image = R.drawable.img_san_oqtosh))
+        listUseAreas.add(UserData(2, "Humson buloq", "Naimova Nilufar","Matematikadan 5 yillik tajriba 500 ortiq muvaffaqiyatli bitirgan talabalar. Darslar istalgan shaklda olib boriladi (onlayn, offlayn) ,haftaning qulay paytidagi guruxlarga qushilish imkoniyati",3,"Toshkent", image = R.drawable.img_san_buloq_humson))
+        listUseAreas.add(UserData(3, "Piramida (Chorvoq)", "Xojiev Akbar","Fizikadan 15 yillik tajriba 1000 ortiq muvaffaqiyatli bitirgan talabalar. Darslar istalgan shaklda olib boriladi (onlayn, offlayn) ,haftaning qulay paytidagi guruxlarga qushilish imkoniyati",3,"Toshkent",image = R.drawable.img_san_piramida))
+        listUseAreas.add(UserData(4, "O'zmetkombinat", "Oripov Akram","Matematikadan 10 yillik tajriba 1000 ortiq muvaffaqiyatli bitirgan talabalar. Darslar istalgan shaklda olib boriladi (onlayn, offlayn) ,haftaning qulay paytidagi guruxlarga qushilish imkoniyati",3,"Toshkent",image = R.drawable.img_san_uzmetcombinat))
 
 //    listUseAreas.add(UseArea(8, R.string.text_popular_programs.toString(), R.drawable.icn_popular_stars.toString()))
         return listUseAreas

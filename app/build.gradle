@@ -16,6 +16,8 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        resValue "string", "google_maps_key",
+                (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
     }
 
     buildTypes {
@@ -31,6 +33,9 @@ android {
 
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
     }
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
@@ -81,5 +86,29 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
     implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'ru.tinkoff.decoro:decoro:1.5.0'
+
+    /**
+     * Google Maps
+     */
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+
+//    /**
+//     * Leak Canary
+//     */
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+
+    /**
+     * Material fro navView
+     */
+    implementation 'com.google.android.material:material:1.4.0'
+//    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+//    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+
+    /**
+     * Viewbinding
+     */
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.0-beta01'
 
 }

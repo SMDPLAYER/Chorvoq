@@ -10,7 +10,8 @@
         android:layout_margin="15dp"
         tools:text="@string/text_oqtosh_title"
         style="@style/TextAppearance.AppCompat.Title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:drawableEnd="@drawable/ic_baseline_record_voice_over_24"
         android:layout_height="wrap_content"/>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

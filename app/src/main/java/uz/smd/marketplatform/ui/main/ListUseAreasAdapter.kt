@@ -15,7 +15,7 @@ import uz.smd.marketplatform.utils.bindItem
 import uz.smd.marketplatform.utils.inflate
 
 
-class ListUseAreasAdapter : RecyclerView.Adapter<ListUseAreasAdapter.ViewHolder>() {
+class ListUseAreasAdapter(val block:(UseArea) -> Unit) : RecyclerView.Adapter<ListUseAreasAdapter.ViewHolder>() {
     var listener: ((UseArea) -> Unit)? = null
 
     private var tasksDay: MutableList<UseArea> = mutableListOf()
@@ -47,7 +47,9 @@ class ListUseAreasAdapter : RecyclerView.Adapter<ListUseAreasAdapter.ViewHolder>
             val d = tasksDay[adapterPosition]
             title.setText(d.title)
             imagePopular.setImageResource(d.image)
-            viewUseAreas.setOnClickListener { listener?.invoke(d) }
+            viewUseAreas.setOnClickListener {block(d)
+//                listener?.invoke(d)
+            }
         }
 
 

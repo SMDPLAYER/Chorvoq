@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
     companion object {
         val handleLoad = MutableLiveData<Boolean>()
         val handleError = MutableLiveData<String>()
+        var isMapLoaded=false
+        var isAccepted=MutableLiveData<Boolean>(false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

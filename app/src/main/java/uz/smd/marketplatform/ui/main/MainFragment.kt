@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import uz.smd.marketplatform.R
+import uz.smd.marketplatform.ui.main.details.DetailsFragment
 import java.util.concurrent.Executors
 
 /**
@@ -21,7 +22,11 @@ import java.util.concurrent.Executors
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 //    private val viewModel: MainViewModel by viewModels()
-val adapter=ListUseAreasAdapter()
+val adapter=ListUseAreasAdapter(){
+    requireActivity().supportFragmentManager.beginTransaction().replace(R.id.mainContainer, DetailsFragment())
+        .addToBackStack(null)
+        .commit()
+}
 val adapterUser = ListUserAdapter(){
   val newItem=  DetailItem(
         name = getString(R.string.text_humson_title),
@@ -53,7 +58,9 @@ val adapterUser = ListUserAdapter(){
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter.setListenerGetPos{
 
+        }
         listUseAreas.adapter=adapter
         adapter.setListenerGetPos {  }
 
